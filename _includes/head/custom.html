@@ -1,0 +1,82 @@
+<!-- Custom head content for enhanced SEO and performance -->
+
+<!-- Preconnect to external domains for faster loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com">
+
+<!-- Enhanced meta tags -->
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+<meta name="author" content="Bozhidar Batsov">
+<meta name="publisher" content="Bozhidar Batsov">
+
+{% if page.date %}
+<meta name="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{% endif %}
+
+{% if page.last_modified_at %}
+<meta name="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
+{% endif %}
+
+<!-- Enhanced Open Graph tags -->
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="{{ site.title }}">
+
+{% if page.series %}
+<meta property="article:section" content="{{ page.series }}">
+{% endif %}
+
+{% if page.tags %}
+{% for tag in page.tags %}
+<meta property="article:tag" content="{{ tag }}">
+{% endfor %}
+{% endif %}
+
+<!-- Twitter Card enhancements -->
+<meta name="twitter:creator" content="@bbatsov">
+<meta name="twitter:site" content="@bbatsov">
+
+<!-- Structured data for articles -->
+{% if page.layout == "single" and page.date %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title | escape }}",
+  "description": "{{ page.excerpt | default: page.description | default: site.description | strip_html | normalize_whitespace | truncatewords: 30 | escape }}",
+  "author": {
+    "@type": "Person",
+    "name": "Bozhidar Batsov",
+    "url": "{{ site.url }}/about/",
+    "sameAs": [
+      "https://github.com/bbatsov",
+      "https://x.com/bbatsov",
+      "https://www.linkedin.com/in/bbatsov/",
+      "https://bsky.app/profile/batsov.net"
+    ]
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Bozhidar Batsov",
+    "url": "{{ site.url }}"
+  },
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
+  "url": "{{ page.url | absolute_url }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  }
+}
+</script>
+{% endif %}
+
+<!-- Performance optimizations -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+
+<!-- Security headers -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block"> 

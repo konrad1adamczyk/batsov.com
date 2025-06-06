@@ -1,8 +1,10 @@
 ---
 title: 'How to Vim: Jump Around'
 date: 2025-05-31 10:09 +0300
+series: "How to Vim"
 tags:
 - vim
+excerpt: "Learn efficient navigation techniques in Vim using motion commands and search operations."
 ---
 
 One of the most important aspects of effective editing is to be able to quickly

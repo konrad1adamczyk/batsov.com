@@ -8,7 +8,10 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.0"
+gem "jekyll", "~> 4.3"
+
+# Required for Ruby 3.0+
+gem "webrick"
 
 # TODO: Remove when this gets fixed in Jekyll
 gem "csv"
@@ -29,6 +32,13 @@ group :jekyll_plugins do
   gem "jekyll-remote-theme"
   gem "jekyll-compose"
   gem 'jekyll-redirect-from'
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+  gem "jekyll-gist"
+  gem "jekyll-github-metadata"
+  gem "jekyll-include-cache"
+  gem "jekyll-archives"
+  gem "jekyll-paginate"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,0 +1,58 @@
+<!-- Enhanced related posts with series awareness -->
+<div class="page__related">
+  {% if page.series %}
+    <!-- Show other posts from the same series first -->
+    {% assign series_posts = site.posts | where: 'series', page.series | where_exp: "post", "post.url != page.url" | limit: 3 %}
+    {% if series_posts.size > 0 %}
+      <h2 class="page__related-title">More from {{ page.series }} Series</h2>
+      <div class="grid__wrapper">
+        {% for post in series_posts %}
+          {% include archive-single.html type="grid" %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <!-- Regular related posts -->
+  {% assign related_posts_count = 4 %}
+  {% if page.series and series_posts.size > 0 %}
+    {% assign related_posts_count = 2 %}
+  {% endif %}
+
+  {% if site.related_posts.size > 0 %}
+    <h2 class="page__related-title">
+      {% if page.series and series_posts.size > 0 %}
+        You May Also Enjoy
+      {% else %}
+        {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
+      {% endif %}
+    </h2>
+    <div class="grid__wrapper">
+      {% assign displayed_posts = "" %}
+      {% if page.series %}
+        {% for post in series_posts %}
+          {% assign displayed_posts = displayed_posts | append: post.url | append: "," %}
+        {% endfor %}
+      {% endif %}
+      
+      {% assign count = 0 %}
+      {% for post in site.related_posts %}
+        {% unless displayed_posts contains post.url %}
+          {% if count < related_posts_count %}
+            {% include archive-single.html type="grid" %}
+            {% assign count = count | plus: 1 %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <!-- Fallback to recent posts -->
+    <h2 class="page__related-title">{{ site.data.ui-text[site.locale].recent_label | default: "Recent Posts" }}</h2>
+    <div class="grid__wrapper">
+      {% assign recent_posts = site.posts | where_exp: "post", "post.url != page.url" | limit: related_posts_count %}
+      {% for post in recent_posts %}
+        {% include archive-single.html type="grid" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div> 

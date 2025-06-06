@@ -1,8 +1,10 @@
 ---
 title: 'How to Vim: Reloading File Buffers'
-date: 2025-06-02 11:11 +0300
+date: 2025-06-02 10:15 +0300
+series: "How to Vim"
 tags:
 - vim
+excerpt: "Learn how to reload file buffers in Vim when files change externally, with automatic and manual techniques."
 ---
 
 In Vim (and many other editors) we interact with the contents of files via the "file buffer"

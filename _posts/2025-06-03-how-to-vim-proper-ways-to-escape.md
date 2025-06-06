@@ -1,8 +1,10 @@
 ---
 title: 'How to Vim: Proper Ways to Escape'
-date: 2025-06-03 08:26 +0300
+date: 2025-06-03 09:00 +0300
+series: "How to Vim"
 tags:
 - vim
+excerpt: "Master the art of escaping Insert mode in Vim with multiple techniques and keyboard optimization tips."
 ---
 
 `ESC` (Escape) is one of the most central key in the world of

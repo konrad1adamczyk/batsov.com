@@ -19,14 +19,14 @@ title                    : "(think)"
 title_separator          : "-"
 subtitle                 : "Think inside the parentheses." # site tagline that appears below site title in masthead
 name                     : "Bozhidar Batsov"
-description              : "Bozhidar Batsov's personal blog"
+description              : "Bozhidar Batsov's personal blog about programming, software development, and technology"
 url                      : "https://batsov.com" # the base hostname & protocol for your site e.g. "https://batsov.com"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "bbatsov/batsov.com" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+teaser                   : "/assets/images/default-teaser.jpg" # path of fallback teaser image
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-# breadcrumbs            : false # true, false (default)
+breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "custom" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
@@ -59,8 +59,8 @@ atom_feed:
   path                   : "/atom.xml" # blank (default) uses feed.xml
   hide                   : # true, false (default)
 search                   : true # false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
+search_full_content      : true # true, false (default)
+search_provider          : lunr # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
@@ -87,16 +87,21 @@ og_image                 : "/assets/images/bozhidar_avatar.jpg" # Open Graph/Twi
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : "Person" # Person or Organization (defaults to Person)
+  name                   : "Bozhidar Batsov" # If the user or organization name differs from the site's name
+  links:
+    - "https://x.com/bbatsov"
+    - "https://github.com/bbatsov"
+    - "https://www.linkedin.com/in/bbatsov/"
+    - "https://bsky.app/profile/batsov.net"
+    - "https://hachyderm.io/@bbatsov"
 
-# Analytics
+# Analytics - Updated to GA4
 analytics:
-  provider               : "google" # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          : "UA-22917580-1"
-    anonymize_ip         : # true, false (default)
+    tracking_id          : "G-XXXXXXXXXX" # Replace with your GA4 measurement ID
+    anonymize_ip         : true
 
 
 # Site Author
@@ -174,6 +179,8 @@ footer:
 include:
   - .htaccess
   - _pages
+  - manifest.json
+  - robots.txt
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -201,6 +208,8 @@ exclude:
   - tmp
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
+  - IMPROVEMENTS.md
+  - lighthouserc.js
 keep_files:
   - .git
   - .svn
@@ -249,6 +258,9 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-github-metadata
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -258,47 +270,53 @@ whitelist:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-archives
 
 
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path>/my-awesome-category/index.html ~> path: /
+# Archives - Enhanced
 category_archive:
-  type: liquid
+  type: jekyll-archives
   path: /categories/
 tag_archive:
-  type: liquid
+  type: jekyll-archives
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
 
+# Jekyll Archives
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+    - year
+    - month
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+    year: archive-year
+    month: archive-month
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
+    year: /:year/
+    month: /:year/:month/
 
 # HTML Compression
 # - https://jch.penibelst.de/
 compress_html:
   clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
   ignore:
     envs: development
 
-# jekyll-feed config
+# jekyll-feed config - Enhanced
 feed:
   path: atom.xml
+  posts_limit: 20
+  excerpt_only: false
   tags:
     path: "/feeds/"
     only:
@@ -307,8 +325,24 @@ feed:
       - Clojure
       - OCaml
       - Meta
+      - Vim
+  categories:
+    path: "/feeds/categories/"
+    only:
+      - programming
+      - editors
+      - tools
 
-# Defaults
+# SEO Tag settings
+webmaster_verifications:
+  google: # Add your Google verification code
+  bing: # Add your Bing verification code
+
+twitter:
+  username: bbatsov
+  card: summary_large_image
+
+# Defaults - Enhanced
 defaults:
   # _posts
   - scope:
@@ -321,6 +355,9 @@ defaults:
       comments: true
       share: true
       related: true
+      show_date: true
+      toc: true
+      toc_sticky: true
   # _pages
   - scope:
       path: ""
@@ -328,3 +365,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _programming posts
+  - scope:
+      path: "_posts/programming"
+      type: posts
+    values:
+      category: programming
+      toc: true
+      toc_sticky: true

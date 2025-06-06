@@ -1,9 +1,11 @@
 ---
 title: Rediscovering Vim
-date: 2025-05-20 18:09 +0300
+date: 2025-05-20 08:00 +0300
+series: "How to Vim"
 tags:
 - vim
 - Emacs
+excerpt: "After years with Emacs, I'm rediscovering Vim and sharing my journey back to this powerful editor."
 ---
 
 Most people who know me and follow my open-source work are likely going to be surprised

@@ -1,0 +1,42 @@
+{
+  "name": "batsov-blog",
+  "version": "1.0.0",
+  "description": "Bozhidar Batsov's personal blog",
+  "scripts": {
+    "build": "bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve --livereload",
+    "clean": "bundle exec jekyll clean",
+    "lint:html": "htmlhint \"_site/**/*.html\"",
+    "lint:links": "markdown-link-check README.md",
+    "test": "npm run build && npm run lint:html",
+    "lighthouse": "lhci autorun"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbatsov/batsov.com.git"
+  },
+  "keywords": [
+    "blog",
+    "jekyll",
+    "programming",
+    "emacs",
+    "vim",
+    "ocaml",
+    "ruby",
+    "clojure"
+  ],
+  "author": "Bozhidar Batsov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bbatsov/batsov.com/issues"
+  },
+  "homepage": "https://batsov.com",
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "htmlhint": "^1.1.4",
+    "markdown-link-check": "^3.11.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 

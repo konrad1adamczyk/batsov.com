@@ -1,8 +1,10 @@
 ---
 title: 'How to Vim: Format Lines & Paragraphs'
-date: 2025-05-23 23:00 +0300
+date: 2025-05-23 14:30 +0300
+series: "How to Vim"
 tags:
 - vim
+excerpt: "Master text formatting in Vim using gq and gw operators for better line and paragraph formatting."
 ---
 
 When writing long code comments or prose (e.g. in Markdown) I like to have

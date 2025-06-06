@@ -1,0 +1,87 @@
+<!-- Tag cloud component -->
+<div class="taxonomy__section">
+  <h2 class="archive__subtitle">{{ site.data.ui-text[site.locale].tag_label | default: "Tags" }}</h2>
+  
+  {% assign tags = site.tags | sort %}
+  <div class="tag-cloud">
+    {% for tag in tags %}
+      {% assign tag_name = tag[0] %}
+      {% assign tag_posts = tag[1] %}
+      {% assign tag_size = tag_posts.size %}
+      
+      {% comment %} Calculate tag size classes {% endcomment %}
+      {% if tag_size >= 10 %}
+        {% assign size_class = "tag-size-xl" %}
+      {% elsif tag_size >= 7 %}
+        {% assign size_class = "tag-size-lg" %}
+      {% elsif tag_size >= 4 %}
+        {% assign size_class = "tag-size-md" %}
+      {% elsif tag_size >= 2 %}
+        {% assign size_class = "tag-size-sm" %}
+      {% else %}
+        {% assign size_class = "tag-size-xs" %}
+      {% endif %}
+      
+      <a href="{{ site.baseurl }}/tags/#{{ tag_name | slugify }}" 
+         class="tag-cloud__tag {{ size_class }}" 
+         title="{{ tag_size }} post{% if tag_size != 1 %}s{% endif %}">
+        {{ tag_name }}
+        <span class="tag-count">({{ tag_size }})</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.tag-cloud {
+  line-height: 2;
+  margin: 1em 0;
+}
+
+.tag-cloud__tag {
+  display: inline-block;
+  margin: 0.25em 0.5em 0.25em 0;
+  padding: 0.25em 0.75em;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #495057;
+  transition: all 0.2s ease;
+}
+
+.tag-cloud__tag:hover {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.tag-count {
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-left: 0.25em;
+}
+
+/* Tag size variations */
+.tag-size-xs { font-size: 0.8em; }
+.tag-size-sm { font-size: 0.9em; }
+.tag-size-md { font-size: 1em; font-weight: 500; }
+.tag-size-lg { font-size: 1.1em; font-weight: 600; }
+.tag-size-xl { font-size: 1.25em; font-weight: 700; }
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .tag-cloud__tag {
+    background: #343a40;
+    border-color: #495057;
+    color: #e9ecef;
+  }
+  
+  .tag-cloud__tag:hover {
+    background: #0056b3;
+    border-color: #0056b3;
+  }
+}
+</style> 

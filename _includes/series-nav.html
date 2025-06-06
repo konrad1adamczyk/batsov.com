@@ -1,0 +1,58 @@
+{% if page.series %}
+<div class="series-nav">
+  <h4>{{ page.series }} Series</h4>
+  
+  {% assign series_posts = site.posts | where: 'series', page.series | sort: 'date' %}
+  {% assign current_index = 0 %}
+  
+  {% for post in series_posts %}
+    {% if post.url == page.url %}
+      {% assign current_index = forloop.index %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  
+  <p>Part {{ current_index }} of {{ series_posts.size }}</p>
+  
+  <ul>
+    {% for post in series_posts %}
+      <li>
+        {% if post.url == page.url %}
+          <span class="current">{{ forloop.index }}. {{ post.title }}</span>
+        {% else %}
+          <a href="{{ post.url }}">{{ forloop.index }}. {{ post.title }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  
+  <div class="series-navigation">
+    {% assign prev_post = nil %}
+    {% assign next_post = nil %}
+    
+    {% for post in series_posts %}
+      {% if post.url == page.url %}
+        {% unless forloop.first %}
+          {% assign prev_index = forloop.index0 | minus: 1 %}
+          {% assign prev_post = series_posts[prev_index] %}
+        {% endunless %}
+        {% unless forloop.last %}
+          {% assign next_index = forloop.index %}
+          {% assign next_post = series_posts[next_index] %}
+        {% endunless %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if prev_post %}
+      <a href="{{ prev_post.url }}" class="btn btn--primary">← Previous: {{ prev_post.title }}</a>
+    {% endif %}
+    
+    {% if next_post %}
+      <a href="{{ next_post.url }}" class="btn btn--primary" style="float: right;">Next: {{ next_post.title }} →</a>
+    {% endif %}
+    
+    <div style="clear: both;"></div>
+  </div>
+</div>
+{% endif %} 

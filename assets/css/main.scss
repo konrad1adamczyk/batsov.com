@@ -1,0 +1,173 @@
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+// Custom styles and improvements
+.page__content {
+  .notice,
+  .notice--primary,
+  .notice--info,
+  .notice--warning,
+  .notice--success,
+  .notice--danger {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  }
+}
+
+// Better code highlighting
+.highlight {
+  border-radius: 4px;
+  
+  pre {
+    background-color: #f8f8f8;
+    border-radius: 4px;
+  }
+}
+
+// Series navigation
+.series-nav {
+  background: #f3f6fa;
+  border: 1px solid #d3d6db;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1.5em 0;
+  
+  h4 {
+    margin: 0 0 0.5em;
+    color: #494e52;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 1.5em;
+  }
+  
+  .current {
+    font-weight: bold;
+    color: #7c4dff;
+  }
+}
+
+// Better responsive images
+.page__content {
+  img {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+}
+
+// Tag and category styling
+.taxonomy__section {
+  margin-bottom: 2em;
+  
+  .taxonomy__title {
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+  
+  .taxonomy__count {
+    color: #7a8288;
+    font-size: 0.9em;
+  }
+}
+
+// Newsletter signup (if implemented)
+.newsletter-signup {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2em;
+  border-radius: 8px;
+  margin: 2em 0;
+  text-align: center;
+  
+  h3 {
+    color: white;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    margin-bottom: 1em;
+    opacity: 0.9;
+  }
+  
+  .btn {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 4px;
+    font-weight: bold;
+    
+    &:hover {
+      background: #f8f9fa;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Dark mode support (basic)
+@media (prefers-color-scheme: dark) {
+  .series-nav {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+    
+    h4 {
+      color: #e2e8f0;
+    }
+    
+    .current {
+      color: #9f7aea;
+    }
+  }
+  
+  .taxonomy__count {
+    color: #a0aec0;
+  }
+}
+
+// Improved search results
+.search-content {
+  .search-result {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e9ecef;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .search-result__title {
+    margin-bottom: 0.25em;
+    
+    a {
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .search-result__excerpt {
+    color: #6c757d;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  
+  .search-result__meta {
+    font-size: 0.8em;
+    color: #8e9297;
+    margin-top: 0.5em;
+  }
+}
+
+// Better social sharing
+.page__share {
+  .btn {
+    margin-right: 0.25em;
+    margin-bottom: 0.25em;
+  }
+} 

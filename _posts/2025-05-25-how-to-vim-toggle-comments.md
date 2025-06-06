@@ -1,8 +1,10 @@
 ---
 title: 'How to Vim: Toggle Comments'
-date: 2025-05-25 10:13 +0300
+date: 2025-05-25 16:45 +0300
+series: "How to Vim"
 tags:
 - vim
+excerpt: "Learn efficient comment toggling techniques in Vim for better code editing workflow."
 ---
 
 One if the things that had initially frustrated me about Vim is

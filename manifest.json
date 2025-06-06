@@ -1,0 +1,48 @@
+{
+  "name": "(think) - Bozhidar Batsov's Blog",
+  "short_name": "(think)",
+  "description": "Bozhidar Batsov's personal blog about programming, software development, and technology",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "categories": ["education", "technology", "programming"],
+  "lang": "en",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Popular Posts",
+      "short_name": "Popular",
+      "description": "Most popular blog posts",
+      "url": "/popular/",
+      "icons": [{"src": "/favicon.png", "sizes": "any"}]
+    },
+    {
+      "name": "Vim Series",
+      "short_name": "Vim",
+      "description": "How to Vim series",
+      "url": "/vim-series/",
+      "icons": [{"src": "/favicon.png", "sizes": "any"}]
+    },
+    {
+      "name": "Search",
+      "short_name": "Search",
+      "description": "Search blog posts",
+      "url": "/search/",
+      "icons": [{"src": "/favicon.png", "sizes": "any"}]
+    }
+  ]
+} 

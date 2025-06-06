@@ -1,16 +1,26 @@
-# main links
+# Main navigation
 main:
-  - title: "Archive"
-    url: /archive
-  - title: "Tags"
-    url: /tags
   - title: "About"
-    url: /about
-  - title: "Contact"
-    url: /contact
+    url: /about/
+  - title: "Archives"
+    url: /archive/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "Series"
+    children:
+      - title: "How to Vim"
+        url: /vim-series/
+      - title: "Emacs Deep Dive"
+        url: /emacs-series/
+      - title: "Learning OCaml"
+        url: /ocaml-series/
+  - title: "Popular"
+    url: /popular/
   - title: "Projects"
-    url: /projects
-  - title: "Presentations"
-    url: /presentations
-  - title: "Quotes"
-    url: /quotes
+    url: /projects/
+  - title: "Contact"
+    url: /contact/
+  - title: "Search"
+    url: /search/
