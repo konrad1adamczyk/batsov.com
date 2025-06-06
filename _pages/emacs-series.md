@@ -11,7 +11,12 @@ A comprehensive exploration of Emacs - the extensible, customizable, free text e
 
 ## Series Posts
 
-{% assign emacs_posts = site.tags.emacs | sort: 'date' %}
+{% assign posts_with_tag = site.tags.emacs %}
+{% if posts_with_tag %}
+  {% assign emacs_posts = posts_with_tag | sort: 'date' %}
+{% else %}
+  {% assign emacs_posts = "" | split: "," %}
+{% endif %}
 
 {% for post in emacs_posts %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}

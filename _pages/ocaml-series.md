@@ -11,7 +11,12 @@ My journey learning OCaml - a powerful functional programming language with stro
 
 ## Series Posts
 
-{% assign ocaml_posts = site.tags.ocaml | sort: 'date' %}
+{% assign posts_with_tag = site.tags.ocaml %}
+{% if posts_with_tag %}
+  {% assign ocaml_posts = posts_with_tag | sort: 'date' %}
+{% else %}
+  {% assign ocaml_posts = "" | split: "," %}
+{% endif %}
 
 {% for post in ocaml_posts %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}

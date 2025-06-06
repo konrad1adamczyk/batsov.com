@@ -11,7 +11,12 @@ A comprehensive series of posts about mastering Vim. Whether you're a beginner o
 
 ## Series Posts
 
-{% assign vim_posts = site.tags.vim | sort: 'date' %}
+{% assign posts_with_tag = site.tags.vim %}
+{% if posts_with_tag %}
+  {% assign vim_posts = posts_with_tag | sort: 'date' %}
+{% else %}
+  {% assign vim_posts = "" | split: "," %}
+{% endif %}
 
 {% for post in vim_posts %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}
