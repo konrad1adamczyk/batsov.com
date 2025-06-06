@@ -11,7 +11,7 @@ A comprehensive exploration of Emacs - the extensible, customizable, free text e
 
 ## Series Posts
 
-{% assign emacs_posts = site.posts | where_exp: "post", "post.tags contains 'Emacs' or post.tags contains 'emacs'" | sort: 'date' %}
+{% assign emacs_posts = site.tags.emacs | sort: 'date' %}
 
 {% for post in emacs_posts %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}

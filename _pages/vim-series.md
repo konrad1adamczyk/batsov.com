@@ -11,7 +11,7 @@ A comprehensive series of posts about mastering Vim. Whether you're a beginner o
 
 ## Series Posts
 
-{% assign vim_posts = site.posts | where_exp: "post", "post.tags contains 'vim'" | sort: 'date' %}
+{% assign vim_posts = site.tags.vim | sort: 'date' %}
 
 {% for post in vim_posts %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}
