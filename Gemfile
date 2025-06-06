@@ -12,6 +12,7 @@ gem "jekyll", "~> 4.3"
 
 # Required for Ruby 3.0+
 gem "webrick"
+gem "faraday-net_http"
 
 # TODO: Remove when this gets fixed in Jekyll
 gem "csv"
