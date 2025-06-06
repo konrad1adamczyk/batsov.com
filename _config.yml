@@ -317,21 +317,6 @@ feed:
   path: atom.xml
   posts_limit: 20
   excerpt_only: false
-  tags:
-    path: "/feeds/"
-    only:
-      - Emacs
-      - Ruby
-      - Clojure
-      - OCaml
-      - Meta
-      - Vim
-  categories:
-    path: "/feeds/categories/"
-    only:
-      - programming
-      - editors
-      - tools
 
 # SEO Tag settings
 webmaster_verifications:

@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div class="page">
+  <div class="page__inner-wrap">
+    <header>
+      <h1 class="page__title">Archive: {{ page.date | date: "%B %Y" }}</h1>
+    </header>
+    
+    <section class="page__content">
+      <p>Posts from {{ page.date | date: "%B %Y" }}:</p>
+      
+      <div class="entries-list">
+        {% for post in page.posts %}
+          {% include archive-single.html %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div> 
